@@ -3,17 +3,31 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/x-icon" href="./src/message.png">
+  <link rel="icon" type="image/x-icon" href="./src/blocks/message.png">
   <link rel="stylesheet" type="text/css" href="./style/style.css">
-  <title>title</title>
+  <title>mdt之我是小书虫</title>
 </head>
 
 <body>
   <div class="background"></div>
-  <button><span>测试mdt样式</span></button>
-  <input id="title" type="text" value="mdt">
-  <input id="text" type="text" value="mindustry">
-  <button id="start"><span>生成</span></button>
+  <div class="container">
+    <input id="title" type="text" placeholder="编辑标题" maxlength="200">
+    <textarea id="text"></textarea>
+    <div style="display: flex;">
+      <button id="import"><span>导入文本</span></button>
+        <div style="margin-top: 5px;margin-left: 25px;">
+          <span style="color: #fff;">——By</span>
+          <br>
+          <input id="author" type="text" placeholder="xxx" maxlength="50">
+        </div>
+    </div>
+  </div>
+  <div class="messages">
+    <img src="./src/blocks/message.png" alt="message" style="transform: scale(1.1);border: 4px solid #ffd37f;">
+    <img src="./src/blocks/reinforced-message.png" alt="reinforced-message">
+    <img src="./src/blocks/world-message.png" alt="world-message">
+    <button id="start"><span>生成</span></button>
+  </div>
 </body>
 <script type="module" src="./script/index.js"></script>
 

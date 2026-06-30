@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'mdt';
-  src: url('../src/font.ecb8654f.woff') format('woff');
+  src: url('../src/font.woff') format('woff');
 }
 
 * {
@@ -65,4 +65,106 @@ button:active {
 button span {
   position: relative;
   z-index: 1;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+  padding: 15px;
+  margin: 10px auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: fit-content;
+  clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+}
+
+.container:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #ffd37f;
+  clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px,15px 0,17px 4px,4px 17px,4px calc(100% - 17px),18px calc(100% - 4px),  calc(100% - 17px) calc(100% - 4px),calc(100% - 4px) calc(100% - 17px),calc(100% - 4px) 17px,calc(100% - 17px) 4px,17px 4px);
+}
+
+#title, #author {
+  font-style: italic;
+  text-align: center;
+  border: none;
+  border-bottom: 3px solid #fff;
+  background-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#title {
+  min-width: 200px;
+  max-width: 400px;
+  width: 35vw;
+}
+
+#author {
+  margin-top: 5px;
+  width: 100px;
+}
+
+#title:focus, #author:focus {
+  outline: none;
+  border-bottom: 2px solid #ffd37f;
+}
+
+::-webkit-input-placeholder {
+  color: #ffd37f;
+}
+
+:-ms-input-placeholder {
+  color: #ffd37f;
+}
+
+::placeholder {
+  color: #ffd37f;
+}
+
+#text {
+  color: #fff;
+  border: none;
+  border-bottom: 4px solid #3e3e3d;
+  background-color: rgba(0, 0, 0, 0.4);
+  min-width: 200px;
+  max-width: 400px;
+  width: 35vw;
+  height: 30vh;
+  padding: 10px;
+  resize: none;
+}
+
+#text:focus {
+  outline: none;
+}
+
+#import {
+  margin-top: 8px;
+}
+
+.messages {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.messages img {
+  margin-right: 15px;
+  transition: transform 0.3s ease;
+  
+}
+
+.messages img:hover {
+  transform: scale(1.2);
 }
