@@ -26,7 +26,7 @@ export function book(text, title) {
   return schematic
 }
 
-function splitTextByLength(text, chunkSize = 300) {
+function splitTextByLength(text, chunkSize = 400) {
   const chunks = [];
   for (let i = 0; i < text.length; i += chunkSize) {
     chunks.push(text.substring(i, i + chunkSize))
