@@ -4,8 +4,9 @@
   "description": "read in mindustry",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "live-server --port=3000"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -17,10 +18,11 @@
     "url": "https://github.com/moren-w/mindustry-reader/issues"
   },
   "homepage": "https://github.com/moren-w/mindustry-reader#readme",
-  "devDependencies": {
-    "live-server": "^1.2.2"
-  },
   "dependencies": {
+    "jquery": "^4.0.0",
     "mindustry-schematic-parser": "^4.3.2"
+  },
+  "devDependencies": {
+    "vite": "^8.1.1"
   }
 }
