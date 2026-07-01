@@ -6,6 +6,12 @@
 
 ---
 
+## 功能展示
+<img width="960" height="1032" alt="ba54d470-6ff9-432c-86c7-625eda2161aa" src="https://github.com/user-attachments/assets/2ef980a5-e440-4684-8c63-b350aff9a510" />
+<img width="934" height="1007" alt="eb5fe6b0-4a40-4a07-94f2-b960f5da6bb3" src="https://github.com/user-attachments/assets/dd36cb0b-dc66-4558-9dda-18080fbffc25" />
+<img width="960" height="1032" alt="dc9e4e1a-8cf0-4f6c-aa67-53b358ced8b1" src="https://github.com/user-attachments/assets/e97f5fbe-44e2-43ca-8e2a-2c477f9f5d4b" />
+
+
 ## ✨ 功能特性
 
 - **文本转换**：输入任意文本内容，一键转为像素工厂信息板
