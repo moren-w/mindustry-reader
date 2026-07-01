@@ -28,7 +28,8 @@ $("#start").on("click", () => {
   $("#file_name").text(title + ".msch")
   const blob = encodeSchematicToFile(schematic)
   const url = URL.createObjectURL(blob)
-  $("#export").on("click", function () {
+
+  $("#export").off("click").on("click", function () {
     const a = document.createElement("a")
     a.href = url
     a.download = title + ".msch"
