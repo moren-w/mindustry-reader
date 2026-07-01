@@ -50,3 +50,7 @@
 2. **本地运行与部署**：完整的安装和启动流程
    - `npm install` — 安装项目依赖
    - `npm run dev` — 启动开发服务器
+
+### TODO
+1. 大文本分页显示和多线程处理
+2. 添加使用<img width="32" height="32" alt="micro-processor" src="https://github.com/user-attachments/assets/1fd5adf3-18d7-4374-8e78-9c56de2183af" />来储存文本的功能
