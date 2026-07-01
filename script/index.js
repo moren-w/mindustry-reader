@@ -2,7 +2,7 @@ import $ from "jquery"
 import { pics } from "./background.js"
 import { book } from "./generater/book.js"
 import { encodeSchematicToBase64, encodeSchematicToFile } from './encode/encode.js'
-import ClipboardJS from 'clipboard';
+import ClipboardJS from 'clipboard'
 
 let blockType = "message"
 
@@ -12,7 +12,7 @@ function background() {
   setTimeout(() => {
     element.css("backgroundImage", "url(/backgrounds/" + pics[Math.floor(Math.random() * pics.length)] + ")")
     element.css("filter", "blur(0px)")
-  }, 600);
+  }, 600)
 }
 background()
 setInterval(background, 20 * 1000)
@@ -28,7 +28,7 @@ $("#start").on("click", () => {
   setTimeout(() => {
     $("#output_base64").css({"transform": "scaleX(1)"})
     $("#output_base64").val(base64)
-  }, 600);
+  }, 600)
 
   $(".file").css({"transform": "rotateY(180deg)"})
   $(".file span").css({"filter": "blur(3px)"})
@@ -36,7 +36,7 @@ $("#start").on("click", () => {
     $(".file").css({"transform": "rotateY(0deg)"})
     $(".file span").css({"filter": "blur(0px)"})
     $("#file_name").text(title + ".msch")
-  }, 600);
+  }, 600)
   const blob = encodeSchematicToFile(schematic)
   const url = URL.createObjectURL(blob)
 
@@ -87,24 +87,24 @@ function importFile() {
 }
 
 async function readChunks(file, chunkSize) {
-  const totalChunks = Math.ceil(file.size / chunkSize);
-  let fullContent = '';
+  const totalChunks = Math.ceil(file.size / chunkSize)
+  let fullContent = ''
   
   for (let i = 0; i < totalChunks; i++) {
-    const start = i * chunkSize;
-    const end = Math.min(start + chunkSize, file.size);
-    const blob = file.slice(start, end);
+    const start = i * chunkSize
+    const end = Math.min(start + chunkSize, file.size)
+    const blob = file.slice(start, end)
     const chunkContent = await new Promise((resolve) => {
-      const reader = new FileReader();
-      reader.onload = (e) => resolve(e.target.result);
-      reader.readAsText(blob);
-    });
-    fullContent += chunkContent;
+      const reader = new FileReader()
+      reader.onload = (e) => resolve(e.target.result)
+      reader.readAsText(blob)
+    })
+    fullContent += chunkContent
 
-    const percent = Math.round(((i + 1) / totalChunks) * 100);
-    $("#text").val(`正在读取... ${percent}%`);
+    const percent = Math.round(((i + 1) / totalChunks) * 100)
+    $("#text").val(`正在读取... ${percent}%`)
   }
-  $("#text").val(fullContent);
+  $("#text").val(fullContent)
 }
 
 $(".messages").children("img").on("click", function () {
@@ -113,4 +113,12 @@ $(".messages").children("img").on("click", function () {
   $(this).css({ "transform": "scale(1.1)", "border": "4px solid #ffd37f" })
 })
 
-new ClipboardJS('#copy');
+new ClipboardJS('#copy')
+
+$(".github").on("click", function () {
+  window.open("https://github.com/moren-w/mindustry-reader")
+})
+
+$(".qq").on("click", function () {
+  window.open("tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=2750893539&website=www.oicqzone.com")
+})

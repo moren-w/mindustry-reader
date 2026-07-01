@@ -167,6 +167,7 @@ input::-webkit-inner-spin-button {
 }
 input[type='number'] {
   -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 ::-webkit-input-placeholder {
@@ -312,4 +313,16 @@ input[type='number'] {
   overflow: hidden;
   text-overflow: ellipsis;
   transition: 0.6s ease;
+}
+
+.github {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+}
+
+.qq {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
 }
