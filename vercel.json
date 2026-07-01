@@ -1,5 +1,5 @@
 {
-  "installCommand": "npm install --no-optional",
+  "installCommand": "npm install --omit=optional",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite"
