@@ -1,5 +1,5 @@
 import $ from "jquery"
-import { pics } from "../src/backgrounds/background.js"
+import { pics } from "../public/backgrounds/background.js"
 import { book } from "./generater/book.js"
 import { encodeSchematicToBase64, encodeSchematicToFile } from './encode/encode.js'
 import ClipboardJS from 'clipboard';
@@ -10,7 +10,7 @@ function background() {
   const element = $(".background")
   element.css("filter", "blur(6px)")
   setTimeout(() => {
-    element.css("backgroundImage", "url(/src/backgrounds/" + pics[Math.floor(Math.random() * pics.length)] + ")")
+    element.css("backgroundImage", "url(/public/backgrounds/" + pics[Math.floor(Math.random() * pics.length)] + ")")
     element.css("filter", "blur(0px)")
   }, 600);
 }

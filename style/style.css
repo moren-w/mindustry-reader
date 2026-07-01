@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'mdt';
-  src: url('../src/font.woff') format('woff');
+  src: url('../public/font.woff') format('woff');
 }
 
 * {
