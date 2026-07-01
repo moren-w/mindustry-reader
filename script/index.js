@@ -22,10 +22,21 @@ $("#start").on("click", () => {
   const text = $("#text").val() ? $("#text").val() : "啥都木有"
   const author = $("#author").val()
   const schematic = book(text, title, blockType, author)
-  const base64 = encodeSchematicToBase64(schematic)
-  $("#output_base64").val(base64)
 
-  $("#file_name").text(title + ".msch")
+  const base64 = encodeSchematicToBase64(schematic)
+  $("#output_base64").css({"transform": "scaleX(0)"})
+  setTimeout(() => {
+    $("#output_base64").css({"transform": "scaleX(1)"})
+    $("#output_base64").val(base64)
+  }, 600);
+
+  $(".file").css({"transform": "rotateY(180deg)"})
+  $(".file span").css({"filter": "blur(3px)"})
+  setTimeout(() => {
+    $(".file").css({"transform": "rotateY(0deg)"})
+    $(".file span").css({"filter": "blur(0px)"})
+    $("#file_name").text(title + ".msch")
+  }, 600);
   const blob = encodeSchematicToFile(schematic)
   const url = URL.createObjectURL(blob)
 
@@ -68,9 +79,32 @@ function importFile() {
       return
     }
 
-    const totalChunks = Math.ceil(fileSize / chunkSize)
+    readChunks(file, chunkSize).then(() => {
+      console.log("File read complete.")
+    })
   })
   fileInput.click()
+}
+
+async function readChunks(file, chunkSize) {
+  const totalChunks = Math.ceil(file.size / chunkSize);
+  let fullContent = '';
+  
+  for (let i = 0; i < totalChunks; i++) {
+    const start = i * chunkSize;
+    const end = Math.min(start + chunkSize, file.size);
+    const blob = file.slice(start, end);
+    const chunkContent = await new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e) => resolve(e.target.result);
+      reader.readAsText(blob);
+    });
+    fullContent += chunkContent;
+
+    const percent = Math.round(((i + 1) / totalChunks) * 100);
+    $("#text").val(`正在读取... ${percent}%`);
+  }
+  $("#text").val(fullContent);
 }
 
 $(".messages").children("img").on("click", function () {
