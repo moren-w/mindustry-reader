@@ -111,7 +111,6 @@ button img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 40vh;
   padding: 15px;
   margin: 10px auto;
   background-color: rgba(0, 0, 0, 0.4);
@@ -279,7 +278,9 @@ button img {
 }
 
 .file span {
+  max-width: 60vw;
   color: #fff;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }

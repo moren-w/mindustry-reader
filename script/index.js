@@ -44,25 +44,39 @@ $("#title, #text, #author").on("keypress", function (e) {
   }
 })
 
-$("#import").on("click", function () {
+$("#import").on("click", importFile)
+function importFile() {
   const fileInput = document.createElement("input")
   fileInput.type = "file"
+  fileInput.accept = ".txt,.text,.md,.markdown,.json,.js,.html,.css,.csv,.log,.xml,.yml,.yaml,.ini,.conf,.cfg,.bat,.sh,.properties,.toml,.rst,.tex,.bib,.r,.pl,.php,.py,.rb,.go,.java,.c,.cpp,.h,.hpp,.cs,.swift,.kt,.m,.mm,.ts,.tsx,.vue,.dart,.lua,.sql,.ps1,.vbs,.asm,.s,.sml,.ml,.lisp,.clj,.cljs,.edn,.rkt,.scm,.fs,.fsx,.fsproj,.fsxproj,.fsproj.user,.fsxproj.user,.fsxproj.userprefs"
   fileInput.addEventListener("change", function () {
     const file = fileInput.files[0]
-    const reader = new FileReader()
-    reader.onload = function (e) {
-      const contents = e.target.result
-      $("#text").val(contents)
+    if (!file) return
+
+    const fileSize = file.size
+    const chunkSize = 512 * 1024
+
+    $("#text").val("正在读取文件...")
+    if (fileSize < chunkSize) {
+      const reader = new FileReader()
+      reader.onload = function (e) {
+        const contents = e.target.result
+        console.log("File contents:", contents)
+        $("#text").val(contents)
+      }
+      reader.readAsText(file)
+      return
     }
-    reader.readAsText(file)
+
+    const totalChunks = Math.ceil(fileSize / chunkSize)
   })
   fileInput.click()
-})
+}
 
 $(".messages").children("img").on("click", function () {
   blockType = $(this).attr("alt")
-  $(".messages").children("img").css({"transform": "", "border": "none"})
-  $(this).css({"transform": "scale(1.1)", "border": "4px solid #ffd37f"})
+  $(".messages").children("img").css({ "transform": "", "border": "none" })
+  $(this).css({ "transform": "scale(1.1)", "border": "4px solid #ffd37f" })
 })
 
 new ClipboardJS('#copy');
