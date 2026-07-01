@@ -1,3 +1,4 @@
+import { Schematic } from "mindustry-schematic-parser"
 import { base64ToBytes, StreamedDataReader, isValid, decodeCompressedData, decodeSchematicSize, decodeTags, decodeBlocks, decodeTiles, StreamedDataWriter, tileConfigEncoder, bytesToBase64, Point2 } from "../mindustry-schematic-parser/index.js"
 import * as Pako from "pako"
 
@@ -107,9 +108,9 @@ function encodeTiles(version, tiles, blockArray) {
 /**
  * 
  * @param {Schematic} schematic 
- * @returns {string} base64 编码的字符串
+ * @returns {Uint8Array}
  */
-export function encodeSchematic(schematic) {
+function encodeSchematic(schematic) {
   const size = encodeSize(schematic.width, schematic.height)
   const tags = encodeTags(schematic.tags)
   const { buffer: blocks, blockArray } = encodeBlocks(schematic.tiles)
@@ -129,7 +130,27 @@ export function encodeSchematic(schematic) {
   const resultBuffer = new Uint8Array(resultWriter.buffer)
   resultBuffer.set(bytes, 5)
 
-  return bytesToBase64(resultBuffer)
+  return resultBuffer
+}
+
+/**
+ * 将 schematic 编码为 base64 字符串
+ * @param {Schematic} schematic 
+ * @returns {String} base64 编码的字符串
+ */
+export function encodeSchematicToBase64(schematic) {
+  return bytesToBase64(encodeSchematic(schematic))
+}
+
+/**
+ * 将 schematic 编码为文件
+ * @param {Schematic} schematic 
+ * @param {String} filename 
+ * @returns {Blob} Blob 对象，可用于下载
+ */
+export function encodeSchematicToFile(schematic) {
+  const blob = new Blob([encodeSchematic(schematic)], { type: 'application/octet-stream' })
+  return blob
 }
 
 /**

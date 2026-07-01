@@ -11,14 +11,17 @@
 <body>
   <div class="background"></div>
   <div class="container">
-    <input id="title" type="text" placeholder="编辑标题" maxlength="200">
-    <textarea id="text"></textarea>
+    <input id="title" type="text" placeholder="编辑标题" maxlength="200" autocomplete="off">
+    <textarea id="text" autocomplete="off"></textarea>
     <div style="display: flex;">
       <button id="import"><span>导入文本</span></button>
         <div style="margin-top: 5px;margin-left: 25px;">
-          <span style="color: #fff;">——By</span>
+          <span style="color: #fff;">
+            <span style="letter-spacing: -2px;">———</span>
+            By
+          </span>
           <br>
-          <input id="author" type="text" placeholder="xxx" maxlength="50">
+          <input id="author" type="text" placeholder="xxx" maxlength="50" autocomplete="off">
         </div>
     </div>
   </div>
@@ -27,6 +30,13 @@
     <img src="./src/blocks/reinforced-message.png" alt="reinforced-message">
     <img src="./src/blocks/world-message.png" alt="world-message">
     <button id="start"><span>生成</span></button>
+  </div>
+  <div class="container2">
+    <input id="output_base64" type="text" value="蓝图代码" autocomplete="off" readonly="readonly">
+    <button id="copy" data-clipboard-target="#output_base64">
+      <img src="./src/icons/copy.png" alt="copy">
+      <span>复制</span>
+    </button>
   </div>
 </body>
 <script type="module" src="./script/index.js"></script>

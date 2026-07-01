@@ -1,8 +1,8 @@
 import { Tiles } from "../schematic/Tiles.js"
 import { Schematic } from "../schematic/Schematic.js"
 
-export function book(text, title, blockType) {
-  const chunks = splitTextByLength(text);
+export function book(text, title, blockType, author) {
+  const chunks = splitTextByLength(text ? text : "啥都木有");
   const width = Math.ceil(Math.sqrt(chunks.length))
   const height = Math.ceil(chunks.length / width)
   const tiles = new Tiles(width, height)
@@ -16,7 +16,7 @@ export function book(text, title, blockType) {
   tags.set("name", title ? title : "Untitled")
   tags.set("description", text.slice(0, 50) + (text.length > 50 ? "..." : ""))
   tags.set("contentMap", "{}")
-  tags.set("labels", '["114"],["[#ffffffff][#ff69b4ff]moren"]')
+  tags.set("labels", '[' + (author ? (author + ',') : '') + '"[#ffffffff][#ff69b4ff]moren"]')
   const schematic = new Schematic({
     tiles: schematicTiles,
     height: width,

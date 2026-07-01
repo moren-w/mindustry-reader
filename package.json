@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/moren-w/mindustry-reader#readme",
   "dependencies": {
+    "clipboard": "^2.0.11",
     "jquery": "^4.0.0",
     "mindustry-schematic-parser": "^4.3.2"
   },
