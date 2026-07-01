@@ -12,6 +12,10 @@
   background-color: #989AA4
 }
 
+span {
+  user-select: none;
+}
+
 .background {
   position: fixed;
   top: 0;
@@ -21,7 +25,7 @@
   z-index: -1;
   filter: blur(0px);
   background-color: #2a2a2d;
-  transition: filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: filter 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 button {
@@ -67,7 +71,7 @@ button:active {
   background-color: #fff;
 }
 
-button * {
+button > * {
   position: relative;
   z-index: 1;
 }
@@ -207,6 +211,8 @@ button img {
   position: relative;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
   width: fit-content;
   padding: 15px;
   margin: 10px auto;
@@ -225,6 +231,17 @@ button img {
   clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px,15px 0,17px 4px,4px 17px,4px calc(100% - 17px),18px calc(100% - 4px),  calc(100% - 17px) calc(100% - 4px),calc(100% - 4px) calc(100% - 17px),calc(100% - 4px) 17px,calc(100% - 17px) 4px,17px 4px);
 }
 
+.container2 .row {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.container2 .row:not(:first-child) {
+  margin-top: 10px;
+}
+
 #output_base64 {
   background-color: rgba(0, 0, 0, 0);
   color: #fff;
@@ -238,4 +255,31 @@ button img {
 #output_base64:focus {
   outline: none;
   border-bottom: 4px solid #555;
+}
+
+.file {
+  display: flex;
+  align-items:center;
+  flex: 1;
+  margin: 0 8px;
+  background-color: rgba(69, 69, 69, 0.9);
+}
+
+.file:hover {
+  background-color: rgba(69, 69, 69, 0.8);
+}
+
+.file:active {
+  background-color: rgba(69, 69, 69, 0.7);
+  border: 4px solid #ffd37f;
+}
+
+.file svg {
+  margin: 0 10px;
+}
+
+.file span {
+  color: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
